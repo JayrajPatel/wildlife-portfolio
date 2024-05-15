@@ -1,51 +1,21 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
+import React from "react"
+import { Link } from "gatsby"
+import "../styles.css"
 
-import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
-
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
-}
+const Layout = ({ children }) => (
+  <div className="site-wrapper">
+    <header>
+      <nav>
+        <Link to="/" activeClassName="active">About</Link>
+        <Link to="/portfolio" activeClassName="active">Portfolio</Link>
+        <Link to="/contact" activeClassName="active">Contact</Link>
+      </nav>
+    </header>
+    <main>{children}</main>
+    <footer style={{ position: "fixed", bottom: 0, left: 0, right: 0, backgroundColor: "rgba(255, 255, 255, 0.5)", padding: "20px", textAlign: "center" }}>
+      <p>&copy; {new Date().getFullYear()} Jayraj Patel Photography</p>
+    </footer>
+  </div>
+)
 
 export default Layout
