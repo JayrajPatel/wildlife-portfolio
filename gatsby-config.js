@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Wildlife Photography Portfolio`,
-    description: `Your description here`,
+    description: ``,
     author: `Jayraj Patel`,
     siteUrl: `https://jayraj.github.io`,
   },
